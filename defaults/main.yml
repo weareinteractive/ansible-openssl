@@ -1,0 +1,22 @@
+---
+# For more information about default variables see:
+# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
+#
+# openssl_keys:
+#   - { name: mykey, key: "mykeycontents" }
+# openssl_certs:
+#   - { name: mycert, cert: "mycertcontents" }
+# openssl_certs:
+#   - { name: 'foobar.com', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
+#
+
+# keys to import
+openssl_keys: []
+# certificates to import
+openssl_certs: []
+# path to certificates
+openssl_certs_path: /etc/ssl/certs
+# path to keys
+openssl_keys_path: /etc/ssl/private
+# self signed certificates
+openssl_self_signed: []
