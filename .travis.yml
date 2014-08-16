@@ -9,6 +9,6 @@ install:
   - pip install ansible
 script:
   - echo localhost > inventory
-  - ln -s ansible-role-openssl ../franklinkim.openssl
+  - ln -s ansible-openssl ../franklinkim.openssl
   - ansible-playbook --syntax-check -i inventory test.yml
   - ansible-playbook -i inventory test.yml --connection=local --sudo -vvvv

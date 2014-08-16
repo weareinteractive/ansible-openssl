@@ -6,7 +6,7 @@
 #   - { name: mykey, key: "mykeycontents" }
 # openssl_certs:
 #   - { name: mycert, cert: "mycertcontents" }
-# openssl_certs:
+# openssl_self_signed:
 #   - { name: 'foobar.com', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
 #
 

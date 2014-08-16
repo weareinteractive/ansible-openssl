@@ -1,7 +1,7 @@
 # Ansible Openssl Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-role-openssl.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-role-openssl)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-role-openssl.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-role-openssl)
+[![Build Status](https://travis-ci.org/weareinteractive/ansible-openssl.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-openssl)
+[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-openssl.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-openssl)
 
 > `openssl` is an [ansible](http://www.ansible.com) role which: 
 > 
@@ -26,7 +26,7 @@ $ arm install franklinkim.openssl
 Using `git`:
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-openssl.git
+$ git clone https://github.com/weareinteractive/ansible-openssl.git
 ```
 
 ## Variables
@@ -36,7 +36,7 @@ $ git clone https://github.com/weareinteractive/ansible-role-openssl.git
 #   - { name: mykey, key: "mykeycontents" }
 # openssl_certs:
 #   - { name: mycert, cert: "mycertcontents" }
-# openssl_certs:
+# openssl_self_signed:
 #   - { name: 'foobar.com', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
 #
 
@@ -70,8 +70,8 @@ openssl_self_signed: []
 ## Testing
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-role-opensll.git
-$ cd ansible-role-opensll
+$ git clone https://github.com/weareinteractive/ansible-opensll.git
+$ cd ansible-opensll
 $ vagrant up
 ```
 
