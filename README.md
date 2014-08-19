@@ -6,8 +6,8 @@
 > `openssl` is an [ansible](http://www.ansible.com) role which: 
 > 
 > * installs openssl
-> * creates a self-signed certificate
 > * imports ssl certificates and keys
+> * creates a self-signed certificate
 
 ## Installation
 
@@ -30,6 +30,8 @@ $ git clone https://github.com/weareinteractive/ansible-openssl.git
 ```
 
 ## Variables
+
+Here is a list of all the default variables for this role, which are also available in `defaults/main.yml`.
 
 ```
 # openssl_keys:

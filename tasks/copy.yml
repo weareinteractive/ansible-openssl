@@ -11,6 +11,7 @@
   tags:
     - system
     - openssl
+    - copy
 
 - name: copying ssl certs
   copy: >
@@ -23,3 +24,4 @@
   tags:
     - system
     - openssl
+    - copy
