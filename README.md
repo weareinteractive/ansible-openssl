@@ -72,8 +72,8 @@ openssl_self_signed: []
 ## Testing
 
 ```
-$ git clone https://github.com/weareinteractive/ansible-opensll.git
-$ cd ansible-opensll
+$ git clone https://github.com/weareinteractive/ansible-openssl.git
+$ cd ansible-openssl
 $ vagrant up
 ```
 
