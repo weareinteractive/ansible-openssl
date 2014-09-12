@@ -42,6 +42,8 @@ Here is a list of all the default variables for this role, which are also availa
 #   - { name: 'foobar.com', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
 #
 
+# should we import cacert.org
+openssl_cacert_import: no
 # keys to import
 openssl_keys: []
 # certificates to import
