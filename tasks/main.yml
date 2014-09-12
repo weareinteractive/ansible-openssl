@@ -1,5 +1,8 @@
 ---
 
 - include: install.yml
+- include: cacert.yml
+  when: openssl_cacert_import
+
 - include: create.yml
 - include: copy.yml
