@@ -1,12 +1,24 @@
 ---
 
-- name: Create directories for certificates
-  file: owner=root group=root mode=755
-    recurse=yes state=directory
-    path={{ item }}
-  with_items:
-    - "{{ openssl_keys_path }}"
-    - "{{ openssl_certs_path }}"
+- name: Creating certs dir
+  include: >
+    create_dir.yml
+    item={{ openssl_certs_path }}
+    mode="0755"
+  tags:
+    - system
+    - openssl
+    - create
+
+- name: Creating keys dir
+  include: >
+    create_dir.yml
+    item={{ openssl_keys_path }}
+    mode="0700"
+  tags:
+    - system
+    - openssl
+    - create
 
 - name: Creating self-signed server SSL cert
   command: >
