@@ -12,3 +12,11 @@
       - { name: 'foobar.org', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
     openssl_keys_path: /etc/my-ssl/private
     openssl_certs_path: /etc/my-ssl/certs
+    openssl_config:
+      default_bits: 2048
+      countryName_default: DE
+      stateOrProvinceName_default: Bavaria
+      localityName_default: Munich
+      organizationName_default: 'My Organization'
+      organizationalUnitName_default: 'My Organization Unit'
+      commonName_default: 'foobar.com'

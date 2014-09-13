@@ -1,0 +1,12 @@
+---
+
+- name: Configuring
+  template: >
+    src={{ item }}
+    dest=/etc/ssl/openssl.cnf
+    owner=root
+    group=root
+    mode=0644
+  first_available_file:
+    - templates/etc-ssl-openssl.cnf.j2
+    - etc-ssl-openssl.cnf.j2

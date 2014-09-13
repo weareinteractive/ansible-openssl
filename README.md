@@ -6,6 +6,7 @@
 > `openssl` is an [ansible](http://www.ansible.com) role which: 
 > 
 > * installs openssl
+> * configures openssl
 > * imports ssl certificates and keys
 > * creates a self-signed certificate
 
@@ -40,7 +41,15 @@ Here is a list of all the default variables for this role, which are also availa
 #   - { name: mycert, cert: "mycertcontents" }
 # openssl_self_signed:
 #   - { name: 'foobar.com', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
-#
+# openssl_config:
+#   default_bits: 2048
+#   countryName_default: DE
+#   stateOrProvinceName_default: Bavaria
+#   localityName_default: Munich
+#   organizationName_default: 'My Organization'
+#   organizationalUnitName_default: 'My Organization Unit'
+#   commonName_default: 'foobar.com'
+#   
 
 # keys to import
 openssl_keys: []
@@ -52,6 +61,23 @@ openssl_certs_path: /etc/ssl/certs
 openssl_keys_path: /etc/ssl/private
 # self signed certificates
 openssl_self_signed: []
+# config variables
+openssl_config: {}
+```
+
+## Templates
+
+The following template files can be overriden by placing it into your setup like this:
+
+* etc-ssl-openssl.cnf.j2
+
+```
+project/
+  roles/
+    franklinkim.openssl/
+  templates/
+    etc-ssl-openssl.cnf.j2
+  playbook.yml
 ```
 
 ## Example playbook
