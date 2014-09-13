@@ -5,8 +5,8 @@
     recurse=yes state=directory
     path={{ item }}
   with_items:
-    - {{ openssl_keys_path }}
-    - {{ openssl_certs_path }}
+    - "{{ openssl_keys_path }}"
+    - "{{ openssl_certs_path }}"
 
 - name: Creating self-signed server SSL cert
   command: >
