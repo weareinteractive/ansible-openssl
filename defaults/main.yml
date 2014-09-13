@@ -20,3 +20,13 @@ openssl_certs_path: /etc/ssl/certs
 openssl_keys_path: /etc/ssl/private
 # self signed certificates
 openssl_self_signed: []
+
+# Change defaults for key generation for ALL users of the server
+openssl_cnf_default_bits: 2048
+openssl_cnf_dn_country: DE
+openssl_cnf_dn_state: Bavaria
+openssl_cnf_dn_locality: Munich
+openssl_cnf_dn_organisation: ''
+openssl_cnf_dn_organisational_unit: ''
+openssl_cnf_dn_common_name: ''
+

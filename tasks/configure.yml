@@ -1,0 +1,58 @@
+---
+
+# Configure OpenSSL defaults relating to key generation.
+
+- name: Set default key length
+  lineinfile: state=present
+    dest=/etc/ssl/openssl.cnf
+    regexp='default_bits .*'
+    line='default_bits        = {{ openssl_cnf_default_bits }}'
+
+- name: Set default for country in Distinguished Name
+  lineinfile: create=no state=present
+    insertafter="^\[ req_distinguished_name \]$"
+    dest=/etc/ssl/openssl.cnf
+    regexp='^C .*'
+    line='C                       = "{{ openssl_cnf_dn_country }}"'
+  when: openssl_cnf_dn_country != ''
+
+- name: Set default for state in Distinguished Name
+  lineinfile: create=no state=present
+    insertafter="^\[ req_distinguished_name \]$"
+    dest=/etc/ssl/openssl.cnf
+    regexp='^ST .*'
+    line="ST                      = {{ openssl_cnf_dn_state }}"
+  when: openssl_cnf_dn_state != ''
+
+- name: Set default for locality in Distinguished Name
+  lineinfile: create=no state=present
+    insertafter="^\[ req_distinguished_name \]$"
+    dest=/etc/ssl/openssl.cnf
+    regexp='^L .*'
+    line="L                       = {{ openssl_cnf_dn_locality }}"
+  when: openssl_cnf_dn_locality != ''
+
+- name: Set default for organisation in Distinguished Name
+  lineinfile: create=no state=present
+    insertafter="^\[ req_distinguished_name \]$"
+    dest=/etc/ssl/openssl.cnf
+    regexp='^O .*'
+    line="O                       = {{ openssl_cnf_dn_organisation }}"
+  when: openssl_cnf_dn_organisation != ''
+
+- name: Set default for organisational unit in Distinguished Name
+  lineinfile: create=no state=present
+    insertafter="^\[ req_distinguished_name \]$"
+    dest=/etc/ssl/openssl.cnf
+    regexp='^OU .*'
+    line="OU                      = {{ openssl_cnf_dn_organisational_unit }}"
+  when: openssl_cnf_dn_organisational_unit != ''
+
+- name: Set default for common name in Distinguished Name
+  lineinfile: create=no state=present
+    insertafter="^\[ req_distinguished_name \]$"
+    dest=/etc/ssl/openssl.cnf
+    regexp='^CN .*'
+    line="CN                      = {{ openssl_cnf_dn_common_name }}"
+  when: openssl_cnf_dn_common_name != ''
+
