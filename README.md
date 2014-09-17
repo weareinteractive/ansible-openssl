@@ -101,6 +101,10 @@ openssl_config: {}
 # config template to install, relative to the ansible repository root
 openssl_config_template:
 
+# Generate a CSR for each self signed certificate
+openssl_generate_csr: false
+# path to certificate signing requests
+openssl_csrs_path: /etc/ssl/csrs
 ```
 
 
@@ -138,6 +142,7 @@ This is an example playbook:
       organizationName_default: 'My Organization'
       organizationalUnitName_default: 'My Organization Unit'
       commonName_default: 'foobar.com'
+    openssl_generate_csr: true
 
 ```
 

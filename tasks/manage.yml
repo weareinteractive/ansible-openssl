@@ -31,3 +31,14 @@
   args:
     creates: "{{ openssl_certs_path }}/{{ item.name }}.crt"
   with_items: "{{ openssl_self_signed }}"
+
+- name: Generate CSR from Certificate 
+  when: openssl_generate_csr
+  command: >
+    openssl req -new
+      -key {{ openssl_keys_path }}/{{ item.name }}.key
+      -out {{ openssl_csrs_path }}/{{ item.name }}.csr
+  args:
+    creates: "{{ openssl_csrs_path }}/{{ item.name }}.csr"
+  with_items: "{{ openssl_self_signed }}"
+
