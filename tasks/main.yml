@@ -1,5 +1,6 @@
 ---
 
 - include: install.yml
+- include: config.yml
 - include: create.yml
 - include: copy.yml
