@@ -49,7 +49,7 @@ Here is a list of all the default variables for this role, which are also availa
 #   organizationName_default: 'My Organization'
 #   organizationalUnitName_default: 'My Organization Unit'
 #   commonName_default: 'foobar.com'
-#   
+# openssl_config_template: templates/openssl.cnf.j2
 
 # keys to import
 openssl_keys: []
@@ -63,21 +63,8 @@ openssl_keys_path: /etc/ssl/private
 openssl_self_signed: []
 # config variables
 openssl_config: {}
-```
-
-## Templates
-
-The following template files can be overriden by placing it into your setup like this:
-
-* etc-ssl-openssl.cnf.j2
-
-```
-project/
-  roles/
-    franklinkim.openssl/
-  templates/
-    etc-ssl-openssl.cnf.j2
-  playbook.yml
+# config template to install, relative to the ansible repository root
+openssl_config_template:
 ```
 
 ## Example playbook
