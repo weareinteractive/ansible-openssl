@@ -8,8 +8,8 @@
 - name: Creating directory
   file: >
     path={{ item }}
+    state=directory
     owner=root
     group=root
     mode={{ mode }}
-    state=directory
   when: not item_stat.stat.exists
