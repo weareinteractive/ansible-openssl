@@ -7,7 +7,7 @@
 # openssl_certs:
 #   - { name: mycert, cert: "mycertcontents" }
 # openssl_self_signed:
-#   - { name: 'foobar.com', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
+#   - { name: 'foobar.com', domains: ['*.foobar.com', 'foobar.com'], country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
 # openssl_config:
 #   default_bits: 2048
 #   countryName_default: DE
