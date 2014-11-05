@@ -30,6 +30,8 @@ openssl_ca: []
 openssl_certs_path: /etc/ssl/certs
 # path to keys
 openssl_keys_path: /etc/ssl/private
+# merge key and cert into a file
+openssl_merge_files: false
 # self signed certificates
 openssl_self_signed: []
 # config variables
