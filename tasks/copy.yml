@@ -33,8 +33,12 @@
     owner: root
     group: root
     mode: 0600
-  when: openssl_merge_files is defined and openssl_merge_files
+  when: openssl_merge_files
   with_items: openssl_keys
+  tags:
+    - system
+    - openssl
+    - copy
 
 - name: Copying owned ca cert
   copy: 

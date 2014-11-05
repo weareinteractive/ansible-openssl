@@ -3,9 +3,7 @@
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
 # openssl_keys:
-#   - { name: mykey, key: "mykeycontents" }
-# openssl_certs:
-#   - { name: mycert, cert: "mycertcontents" }
+#   - { name: mykey, key: "mykeycontents", cert: "mycertcontents" }
 # openssl_ca:
 #   - { name: myca, ca: "mycacontents" }
 # openssl_self_signed:
@@ -20,10 +18,8 @@
 #   commonName_default: 'foobar.com'
 # openssl_config_template: templates/openssl.cnf.j2
 
-# keys to import
+# keys and certs to import
 openssl_keys: []
-# certificates to import
-openssl_certs: []
 # path to owned ca certificate
 openssl_ca: []
 # path to certificates
