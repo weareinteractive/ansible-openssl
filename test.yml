@@ -4,11 +4,12 @@
   roles:
     - ansible-openssl
   vars:
-    openssl_keys_path: /etc/my-ssl/private
-    openssl_certs_path: /etc/my-ssl/certs
-    openssl_merge_files: false
     openssl_keys:
       - name: foobar.com
+        user: rails
+        group: rails
+        key_path: /etc/my-ssl/private
+        cert_path: /etc/my-ssl/certs
         key: |+
           -----BEGIN PRIVATE KEY-----
           MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhSsYh36iAShzd
@@ -62,6 +63,8 @@
           /14Fu1Ry6NAq/1zeSzX4JrFQOlZDNtqF0UXgph2RehMZjtQG2b4B8gLpwPRe
           -----END CERTIFICATE-----
       - name: foobar2.com
+        key_path: /etc/my-ssl/private
+        merge_cert: true
         key: |+
           -----BEGIN PRIVATE KEY-----
           MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhSsYh36iAShzd
@@ -123,6 +126,8 @@
         unit: ''
         email: 'foo@bar.com'
         days: 3650
+        key_path: /etc/mycertificate
+        cert_path: /etc/mycertificate
       - name: '*.foobar.org'
         domains: ['foobar.org', '*.foobar.org']
         country: 'DE'
@@ -131,6 +136,8 @@
         organization: 'Foo Bar'
         unit: ''
         email: 'foo@bar.com'
+        key_path: /etc/mycertificate2
+        cert_path: /etc/mycertificate2
     openssl_config:
       default_bits: 2048
       countryName_default: DE

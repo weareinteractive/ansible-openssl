@@ -1,20 +1,53 @@
 ---
 
-- name: Creating certs dir
-  include: >
-    create_dir.yml
-    item={{ openssl_certs_path }}
-    mode="0755"
+- name: Creating keys directory
+  file:
+    path: "{{ item.key_path }}"
+    state: directory
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "0700"
+  with_items: openssl_keys
   tags:
     - system
     - openssl
     - create
 
-- name: Creating keys dir
-  include: >
-    create_dir.yml
-    item={{ openssl_keys_path }}
-    mode="0700"
+- name: Creating certs directory
+  file:
+    path: "{{ item.cert_path }}"
+    state: directory
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "0700"
+  with_items: openssl_keys
+  when: item.cert_path is defined
+  tags:
+    - system
+    - openssl
+    - create
+
+- name: Creating self-signed server SSL key directory
+  file:
+    path: "{{ item.key_path }}"
+    state: directory
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "0700"
+  with_items: openssl_self_signed
+  tags:
+    - system
+    - openssl
+    - create
+
+- name: Creating self-signed server SSL cert directory
+  file:
+    path: "{{ item.cert_path }}"
+    state: directory
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: "0700"
+  with_items: openssl_self_signed
   tags:
     - system
     - openssl
@@ -22,8 +55,8 @@
 
 - name: Creating self-signed server SSL cert
   command: >
-    openssl req -new -nodes -x509 -subj "/C={{ item.country|default('') }}/ST={{ item.state|default('') }}/L={{ item.city|default('') }}/O={{ item.organization|default('') }}/OU={{ item.unit|default('') }}/{% if item.domains is defined %}{% for domain in item.domains %}CN={{ domain }}/{% endfor %}{% else %}CN={{ item.name }}/{% endif %}emailAddress={{ item.email|default('') }}" -days {{ item.days|default(3650) }} -keyout {{ openssl_keys_path }}/{{ item.name }}.key -out {{ openssl_certs_path }}/{{ item.name }}.crt -extensions v3_ca
-    creates={{ openssl_certs_path }}/{{ item.name }}.crt
+    openssl req -new -nodes -x509 -subj "/C={{ item.country|default('') }}/ST={{ item.state|default('') }}/L={{ item.city|default('') }}/O={{ item.organization|default('') }}/OU={{ item.unit|default('') }}/{% if item.domains is defined %}{% for domain in item.domains %}CN={{ domain }}/{% endfor %}{% else %}CN={{ item.name }}/{% endif %}emailAddress={{ item.email|default('') }}" -days {{ item.days|default(3650) }} -keyout {{ item.key_path }}/{{ item.name }}.key -out {{ item.cert_path }}/{{ item.name }}.crt -extensions v3_ca
+    creates={{ item.key_path }}/{{ item.name }}.crt
   with_items: openssl_self_signed
   tags:
     - system

@@ -5,5 +5,10 @@ WORKDIR /root
 ADD test.yml /root/test.yml
 ADD ansible.cfg /root/.ansible.cfg
 
-RUN git clone https://github.com/jacoelho/ansible-openssl.git \
-  && ansible-playbook -c local test.yml
+#RUN git clone -b development https://github.com/jacoelho/ansible-openssl.git \
+
+ADD . /root/ansible-openssl
+
+RUN groupadd rails \
+  && useradd -g rails rails \
+  && ansible-playbook -vv -c local test.yml

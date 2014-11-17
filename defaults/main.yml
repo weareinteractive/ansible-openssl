@@ -3,7 +3,8 @@
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
 # openssl_keys:
-#   - { name: mykey, key: "mykeycontents", cert: "mycertcontents" }
+#   - { name: mykey, key_path: /etc/my-ssl/private, cert_path: /etc/my-ssl/certs, key: "mykeycontents", cert: "mycertcontents" }
+#   - { name: mykey2, key_path: /etc/my-ssl2/private, merge_cert: true,  key:"mykeycontents", cert: "mycertcontents" }
 # openssl_ca:
 #   - { name: myca, ca: "mycacontents" }
 # openssl_self_signed:
@@ -20,18 +21,16 @@
 
 # keys and certs to import
 openssl_keys: []
+
 # path to owned ca certificate
 openssl_ca: []
-# path to certificates
-openssl_certs_path: /etc/ssl/certs
-# path to keys
-openssl_keys_path: /etc/ssl/private
-# merge key and cert into a file
-openssl_merge_files: false
+
 # self signed certificates
 openssl_self_signed: []
+
 # config variables
 openssl_config: {}
+
 # config template to install, relative to the ansible repository root
 openssl_config_template:
 
