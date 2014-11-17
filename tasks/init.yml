@@ -1,0 +1,6 @@
+--
+- assert:
+    that:
+      - openssl_keys|length < 0
+      - openssl_keys_path != ''
+  tags: ['check_vars']
