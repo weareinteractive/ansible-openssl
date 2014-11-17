@@ -1,0 +1,9 @@
+---
+
+- assert:
+    that:
+      - item.key_path != ''
+      - item.key != ''
+      - item.cert != ''
+  with_items: openssl_keys
+  tags: ['check_vars']

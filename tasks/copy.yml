@@ -1,27 +1,56 @@
 ---
 
 - name: Copying ssl keys
-  copy: >
-    content="{{ item.key }}"
-    dest={{ openssl_keys_path }}/{{ item.name }}.key
-    owner=root
-    group=root
-    mode=0600
+  copy: 
+    content: "{{ item.key }}"
+    dest: "{{ item.key_path }}/{{ item.name }}.key"
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: 0600
   with_items: openssl_keys
   tags:
     - system
     - openssl
     - copy
 
-- name: copying ssl certs
-  copy: >
-    content="{{ item.cert }}"
-    dest={{ openssl_certs_path }}/{{ item.name }}.crt
-    owner=root
-    group=root
-    mode=0644
-  with_items: openssl_certs
+- name: Copying ssl certs
+  copy:
+    content: "{{ item.cert }}"
+    dest: "{{ item.cert_path }}/{{ item.name }}.crt"
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: 0644
+  with_items: openssl_keys
+  when: item.cert_path is defined
   tags:
     - system
     - openssl
     - copy
+
+- name: Copying merged key and certs
+  template:
+    src: 'merge-key-cert.pem.j2'
+    dest: "{{ item.key_path }}/{{ item.name }}.pem"
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: 0600
+  when: item.merge_cert is defined and item.merge_cert
+  with_items: openssl_keys
+  tags:
+    - system
+    - openssl
+    - copy
+
+- name: Copying owned ca cert
+  copy: 
+    content: "{{ item.ca }}"
+    dest: "/usr/local/share/ca-certificates/{{ item.name }}.crt"
+    owner: "{{ item.user | default('root') }}"
+    group: "{{ item.group | default('root') }}"
+    mode: 0644
+  with_items: openssl_ca
+  register: ca
+  tags:
+    - system
+    - openssl
+    - ca

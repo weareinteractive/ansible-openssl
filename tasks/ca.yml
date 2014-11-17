@@ -1,0 +1,11 @@
+---
+
+- name: Update ca certificates
+  command: update-ca-certificates
+    creates=/etc/ssl/certs/{{ item.name }}.pem
+  with_items: openssl_ca
+  when: ca.changed
+  tags:
+    - system
+    - openssl
+    - ca

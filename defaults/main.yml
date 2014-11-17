@@ -3,9 +3,10 @@
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
 # openssl_keys:
-#   - { name: mykey, key: "mykeycontents" }
-# openssl_certs:
-#   - { name: mycert, cert: "mycertcontents" }
+#   - { name: mykey, key_path: /etc/my-ssl/private, cert_path: /etc/my-ssl/certs, key: "mykeycontents", cert: "mycertcontents" }
+#   - { name: mykey2, key_path: /etc/my-ssl2/private, merge_cert: true,  key:"mykeycontents", cert: "mycertcontents" }
+# openssl_ca:
+#   - { name: myca, ca: "mycacontents" }
 # openssl_self_signed:
 #   - { name: 'foobar.com', domains: ['*.foobar.com', 'foobar.com'], country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
 # openssl_config:
@@ -18,17 +19,18 @@
 #   commonName_default: 'foobar.com'
 # openssl_config_template: templates/openssl.cnf.j2
 
-# keys to import
+# keys and certs to import
 openssl_keys: []
-# certificates to import
-openssl_certs: []
-# path to certificates
-openssl_certs_path: /etc/ssl/certs
-# path to keys
-openssl_keys_path: /etc/ssl/private
+
+# path to owned ca certificate
+openssl_ca: []
+
 # self signed certificates
 openssl_self_signed: []
+
 # config variables
 openssl_config: {}
+
 # config template to install, relative to the ansible repository root
 openssl_config_template:
+

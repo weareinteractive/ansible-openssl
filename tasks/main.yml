@@ -1,5 +1,6 @@
 ---
 
+- include: init.yml
 - include: install_debian.yml
   when: ansible_os_family == 'Debian'
 - include: install_redhat.yml
@@ -7,3 +8,4 @@
 - include: config.yml
 - include: create.yml
 - include: copy.yml
+- include: ca.yml
