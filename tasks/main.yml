@@ -4,6 +4,8 @@
   when: ansible_os_family == 'Debian'
 - include: install_redhat.yml
   when: ansible_os_family == 'RedHat'
+- include: install_arch.yml
+  when: ansible_os_family == 'Archlinux'
 - include: config.yml
 - include: create.yml
 - include: copy.yml
