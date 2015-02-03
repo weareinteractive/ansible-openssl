@@ -1,8 +1,8 @@
 ---
 
 - name: Installing packages
-  pacman:
-    pkg='{{ item }}'
+  pacman: >
+    pkg={{ item }}
     state=present
   with_items:
     - openssl
