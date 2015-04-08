@@ -1,10 +1,12 @@
 # Ansible Openssl Role
 
-[![Build Status](https://travis-ci.org/weareinteractive/ansible-openssl.png?branch=master)](https://travis-ci.org/weareinteractive/ansible-openssl)
-[![Stories in Ready](https://badge.waffle.io/weareinteractive/ansible-openssl.svg?label=ready&title=Ready)](http://waffle.io/weareinteractive/ansible-openssl)
+[![Build Status](https://img.shields.io/travis/weareinteractive/ansible-openssl.svg)](https://travis-ci.org/weareinteractive/ansible-openssl)
+[![Galaxy](http://img.shields.io/badge/galaxy-franklinkim.openssl-blue.svg)](https://galaxy.ansible.com/list#/roles/1378)
+[![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-openssl.svg)](https://github.com/weareinteractive/ansible-openssl)
+[![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-openssl.svg)](https://github.com/weareinteractive/ansible-openssl)
 
-> `openssl` is an [ansible](http://www.ansible.com) role which: 
-> 
+> `openssl` is an [ansible](http://www.ansible.com) role which:
+>
 > * installs openssl
 > * configures openssl
 > * imports ssl certificates and keys
@@ -18,10 +20,10 @@ Using `ansible-galaxy`:
 $ ansible-galaxy install franklinkim.openssl
 ```
 
-Using `arm` ([Ansible Role Manager](https://github.com/mirskytech/ansible-role-manager/)):
+Using `requirements.yml`:
 
 ```
-$ arm install franklinkim.openssl
+- src: franklinkim.openssl
 ```
 
 Using `git`:
@@ -29,6 +31,10 @@ Using `git`:
 ```
 $ git clone https://github.com/weareinteractive/ansible-openssl.git
 ```
+
+## Dependencies
+
+* Ansible >= 1.9
 
 ## Variables
 
@@ -71,7 +77,7 @@ openssl_config_template:
 
 ```
 - host: all
-  roles: 
+  roles:
     - franklinkim.openssl
   vars:
     openssl_keys:

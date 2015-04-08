@@ -1,0 +1,37 @@
+---
+
+- name: Installing packages with APT
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  when: ansible_pkg_mgr == 'apt'
+  with_items:
+    - openssl
+
+- name: Installing packages with PACMAN
+  pacman:
+    pkg: "{{ item }}"
+    state: present
+  when: ansible_pkg_mgr == 'pacman'
+  with_items:
+    - openssl
+
+- name: Installing packages with YUM
+  yum:
+    name: "{{ item }}"
+    state: present
+  when: ansible_pkg_mgr == 'yum'
+  with_items:
+    - openssl
+
+
+- name: Creating folders
+  file:
+    dest: "{{ item }}"
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  with_items:
+    - "{{ openssl_keys_path }}"
+    - "{{ openssl_certs_path }}"
