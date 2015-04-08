@@ -1,11 +1,25 @@
 ---
 
-- include: install_debian.yml
-  when: ansible_os_family == 'Debian'
-- include: install_redhat.yml
-  when: ansible_os_family == 'RedHat'
-- include: install_arch.yml
-  when: ansible_os_family == 'Archlinux'
+- include: install.yml
+  tags:
+    - system
+    - openssl
+    - openssl-install
+
 - include: config.yml
+  tags:
+    - system
+    - openssl
+    - openssl-config
+
 - include: create.yml
+  tags:
+    - system
+    - openssl
+    - openssl-create
+
 - include: copy.yml
+  tags:
+    - system
+    - openssl
+    - openssl-copy
