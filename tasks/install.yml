@@ -24,14 +24,14 @@
   with_items:
     - openssl
 
+- name: Creating certs dir
+  include: create_dir.yml
+  vars:
+    item: "{{ openssl_certs_path }}"
+    mode: "0755"
 
-- name: Creating folders
-  file:
-    dest: "{{ item }}"
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-  with_items:
-    - "{{ openssl_keys_path }}"
-    - "{{ openssl_certs_path }}"
+- name: Creating keys dir
+  include: create_dir.yml
+  vars:
+    item: "{{ openssl_keys_path }}"
+    mode: "0700"

@@ -1,16 +1,22 @@
 ---
 
-- name: Creating certs dir
-  include: create_dir.yml
-  vars:
-    item: "{{ openssl_certs_path }}"
-    mode: "0755"
+- name: Copying keys
+  copy:
+    content: "{{ item.key }}"
+    dest: "{{ openssl_keys_path }}/{{ item.name }}.key"
+    owner: root
+    group: root
+    mode: 0600
+  with_items: openssl_keys
 
-- name: Creating keys dir
-  include: create_dir.yml
-  vars:
-    item: "{{ openssl_keys_path }}"
-    mode: "0700"
+- name: Copying certs
+  copy:
+    content: "{{ item.cert }}"
+    dest: "{{ openssl_certs_path }}/{{ item.name }}.crt"
+    owner: root
+    group: root
+    mode: 0644
+  with_items: openssl_certs
 
 - name: Creating self-signed server SSL cert
   command: >
