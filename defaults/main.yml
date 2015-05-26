@@ -3,21 +3,11 @@
 # http://www.ansibleworks.com/docs/playbooks_variables.html#id26
 #
 # openssl_keys:
-#   - name: mykey
+#   - name: mykey.key
 #     key: "mykeycontents"
-#   - name: myotherkey
-#     cert: "myotherkeycontents"
-#     mode: "0664"
-#     owner: "www-data"
-#     group: "www-data"
 # openssl_certs:
-#   - name: mycert
+#   - name: mycert.crt
 #     cert: "mycertcontents"
-#   - name: myothercert
-#     cert: "myothercertcontents"
-#     mode: "0664"
-#     owner: "www-data"
-#     group: "www-data"
 # openssl_self_signed:
 #   - name: 'foobar.com'
 #     domains: ['*.foobar.com', 'foobar.com']

@@ -3,19 +3,19 @@
 - name: Copying keys
   copy:
     content: "{{ item.key }}"
-    dest: "{{ openssl_keys_path }}/{{ item.name }}.key"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0600') }}"
+    dest: "{{ openssl_keys_path }}/{{ item.name }}"
+    owner: root
+    group: ssl-cert
+    mode: "0640"
   with_items: openssl_keys
 
 - name: Copying certs
   copy:
     content: "{{ item.cert }}"
-    dest: "{{ openssl_certs_path }}/{{ item.name }}.crt"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0644') }}"
+    dest: "{{ openssl_certs_path }}/{{ item.name }}"
+    owner: root
+    group: root
+    mode: "0644"
   with_items: openssl_certs
 
 - name: Creating self-signed server SSL cert
