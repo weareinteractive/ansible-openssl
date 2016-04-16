@@ -7,7 +7,7 @@
     owner: root
     group: ssl-cert
     mode: "0640"
-  with_items: openssl_keys
+  with_items: "{{ openssl_keys }}"
 
 - name: Copying certs
   copy:
@@ -16,7 +16,7 @@
     owner: root
     group: root
     mode: "0644"
-  with_items: openssl_certs
+  with_items: "{{ openssl_certs }}"
 
 - name: Creating self-signed server SSL cert
   command: >
@@ -30,4 +30,4 @@
       -out {{ openssl_certs_path }}/{{ item.name }}.crt
   args:
     creates: "{{ openssl_certs_path }}/{{ item.name }}.crt"
-  with_items: openssl_self_signed
+  with_items: "{{ openssl_self_signed }}"
