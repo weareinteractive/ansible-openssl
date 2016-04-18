@@ -86,6 +86,14 @@ openssl_certs: []
 openssl_certs_path: /etc/ssl/certs
 # path to keys
 openssl_keys_path: /etc/ssl/private
+# default key owner
+openssl_default_key_owner: ssl-cert
+# default key group
+openssl_default_key_group: root
+# default cert owner
+openssl_default_cert_owner: root
+# default cert group
+openssl_default_cert_group: root
 # self signed certificates
 openssl_self_signed: []
 # config variables
@@ -118,6 +126,10 @@ This is an example playbook:
       - { name: '*.foobar.org', domains: ['foobar.org', '*.foobar.org'], country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
     openssl_keys_path: /etc/my-ssl/private
     openssl_certs_path: /etc/my-ssl/certs
+    openssl_default_key_owner: root
+    openssl_default_key_group: root
+    openssl_default_cert_owner: root
+    openssl_default_cert_group: root
     openssl_config:
       default_bits: 2048
       countryName_default: DE
