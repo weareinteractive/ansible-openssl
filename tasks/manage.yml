@@ -5,9 +5,9 @@
     content: "{{ item.key }}"
     dest: "{{ openssl_keys_path }}/{{ item.name }}"
     owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
-    mode: "{{ item.mode | default('0600') }}"
-  with_items: openssl_keys
+    group: "{{ item.group | default('ssl-cert') }}"
+    mode: "{{ item.mode | default('0640') }}"
+  with_items: "{{ openssl_keys }}"
 
 - name: Copying certs
   copy:
@@ -16,7 +16,7 @@
     owner: "{{ item.owner | default('root') }}"
     group: "{{ item.group | default('root') }}"
     mode: "{{ item.mode | default('0644') }}"
-  with_items: openssl_certs
+  with_items: "{{ openssl_certs }}"
 
 - name: Creating self-signed server SSL cert
   command: >
@@ -30,4 +30,4 @@
       -out {{ openssl_certs_path }}/{{ item.name }}.crt
   args:
     creates: "{{ openssl_certs_path }}/{{ item.name }}.crt"
-  with_items: openssl_self_signed
+  with_items: "{{ openssl_self_signed }}"
