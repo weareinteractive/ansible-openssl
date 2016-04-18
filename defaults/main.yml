@@ -1,7 +1,4 @@
 ---
-# For more information about default variables see:
-# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
-#
 # openssl_keys:
 #   - name: mykey.key
 #     key: "mykeycontents"
