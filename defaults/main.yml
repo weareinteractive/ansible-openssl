@@ -1,7 +1,4 @@
 ---
-# For more information about default variables see:
-# http://www.ansibleworks.com/docs/playbooks_variables.html#id26
-#
 # openssl_keys:
 #   - name: mykey.key
 #     key: "mykeycontents"
@@ -46,6 +43,14 @@ openssl_certs: []
 openssl_certs_path: /etc/ssl/certs
 # path to keys
 openssl_keys_path: /etc/ssl/private
+# default key owner
+openssl_default_key_owner: ssl-cert
+# default key group
+openssl_default_key_group: root
+# default cert owner
+openssl_default_cert_owner: root
+# default cert group
+openssl_default_cert_group: root
 # self signed certificates
 openssl_self_signed: []
 # config variables

@@ -4,8 +4,8 @@
   copy:
     content: "{{ item.key }}"
     dest: "{{ openssl_keys_path }}/{{ item.name }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('ssl-cert') }}"
+    owner: "{{ item.owner | default(openssl_default_key_owner) }}"
+    group: "{{ item.group | default(openssl_default_key_group) }}"
     mode: "{{ item.mode | default('0640') }}"
   with_items: "{{ openssl_keys }}"
 
@@ -13,8 +13,8 @@
   copy:
     content: "{{ item.cert }}"
     dest: "{{ openssl_certs_path }}/{{ item.name }}"
-    owner: "{{ item.owner | default('root') }}"
-    group: "{{ item.group | default('root') }}"
+    owner: "{{ item.owner | default(openssl_default_cert_owner) }}"
+    group: "{{ item.group | default(openssl_default_cert_group) }}"
     mode: "{{ item.mode | default('0644') }}"
   with_items: "{{ openssl_certs }}"
 
@@ -24,8 +24,8 @@
       -x509
       -nodes
       -extensions v3_ca
-      -days {{ item.days|default(3650) }}
-      -subj "/C={{ item.country|default('') }}/ST={{ item.state|default('') }}/L={{ item.city|default('') }}/O={{ item.organization|default('') }}/OU={{ item.unit|default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email|default('') }}"
+      -days {{ item.days | default(3650) }}
+      -subj "/C={{ item.country | default('') }}/ST={{ item.state | default('') }}/L={{ item.city | default('') }}/O={{ item.organization | default('') }}/OU={{ item.unit | default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email | default('') }}"
       -keyout {{ openssl_keys_path }}/{{ item.name }}.key
       -out {{ openssl_certs_path }}/{{ item.name }}.crt
   args:
