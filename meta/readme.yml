@@ -1,0 +1,15 @@
+---
+
+galaxy_name: franklinkim.openssl
+github_user: weareinteractive
+github_name: ansible-openssl
+badges: |
+  [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-openssl.svg)](https://travis-ci.org/weareinteractive/ansible-openssl)
+  [![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.openssl-blue.svg)](https://galaxy.ansible.com/weareinteractive/openssl)
+  [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-openssl.svg)](https://github.com/weareinteractive/ansible-openssl)
+  [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-openssl.svg)](https://github.com/weareinteractive/ansible-openssl)
+description: |
+  > * installs openssl
+  > * configures openssl
+  > * imports ssl certificates and keys
+  > * creates a self-signed certificate

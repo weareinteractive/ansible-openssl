@@ -4,19 +4,19 @@
   copy:
     content: "{{ item.key }}"
     dest: "{{ openssl_keys_path }}/{{ item.name }}"
-    owner: root
-    group: ssl-cert
-    mode: "0640"
-  with_items: openssl_keys
+    owner: "{{ item.owner | default(openssl_default_key_owner) }}"
+    group: "{{ item.group | default(openssl_default_key_group) }}"
+    mode: "{{ item.mode | default('0640') }}"
+  with_items: "{{ openssl_keys }}"
 
 - name: Copying certs
   copy:
     content: "{{ item.cert }}"
     dest: "{{ openssl_certs_path }}/{{ item.name }}"
-    owner: root
-    group: root
-    mode: "0644"
-  with_items: openssl_certs
+    owner: "{{ item.owner | default(openssl_default_cert_owner) }}"
+    group: "{{ item.group | default(openssl_default_cert_group) }}"
+    mode: "{{ item.mode | default('0644') }}"
+  with_items: "{{ openssl_certs }}"
 
 - name: Creating self-signed server SSL cert
   command: >
@@ -24,10 +24,10 @@
       -x509
       -nodes
       -extensions v3_ca
-      -days {{ item.days|default(3650) }}
-      -subj "/C={{ item.country|default('') }}/ST={{ item.state|default('') }}/L={{ item.city|default('') }}/O={{ item.organization|default('') }}/OU={{ item.unit|default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email|default('') }}"
+      -days {{ item.days | default(3650) }}
+      -subj "/C={{ item.country | default('') }}/ST={{ item.state | default('') }}/L={{ item.city | default('') }}/O={{ item.organization | default('') }}/OU={{ item.unit | default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email | default('') }}"
       -keyout {{ openssl_keys_path }}/{{ item.name }}.key
       -out {{ openssl_certs_path }}/{{ item.name }}.crt
   args:
     creates: "{{ openssl_certs_path }}/{{ item.name }}.crt"
-  with_items: openssl_self_signed
+  with_items: "{{ openssl_self_signed }}"
