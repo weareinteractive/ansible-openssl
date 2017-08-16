@@ -51,6 +51,10 @@ openssl_default_key_group: root
 openssl_default_cert_owner: root
 # default cert group
 openssl_default_cert_group: root
+# Generate a CSR for each self signed certificate
+openssl_generate_csr: false
+# path to certificate signing requests
+openssl_csrs_path: /etc/ssl/csrs
 # self signed certificates
 openssl_self_signed: []
 # config variables

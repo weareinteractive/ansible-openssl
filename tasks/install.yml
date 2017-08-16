@@ -35,3 +35,11 @@
   vars:
     item: "{{ openssl_keys_path }}"
     mode: "0700"
+
+- name: Creating csrs dir
+  when: openssl_generate_csr
+  include: create_dir.yml
+  vars:
+    item: "{{ openssl_csrs_path }}"
+    mode: "0750"
+

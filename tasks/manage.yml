@@ -31,3 +31,16 @@
   args:
     creates: "{{ openssl_certs_path }}/{{ item.name }}.crt"
   with_items: "{{ openssl_self_signed }}"
+
+
+- name: Generate CSR from Certificate 
+  when: openssl_generate_csr
+  command: >
+    openssl req -new
+      -subj "/C={{ item.country | default('') }}/ST={{ item.state | default('') }}/L={{ item.city | default('') }}/O={{ item.organization | default('') }}/OU={{ item.unit | default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email | default('') }}"
+      -key {{ openssl_keys_path }}/{{ item.name }}.key
+      -out {{ openssl_csrs_path }}/{{ item.name }}.csr
+  args:
+    creates: "{{ openssl_csrs_path }}/{{ item.name }}.csr"
+  with_items: "{{ openssl_self_signed }}"
+
