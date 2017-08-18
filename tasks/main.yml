@@ -20,3 +20,11 @@
     - openssl
     - manage
     - openssl-manage
+
+- include: cacert.yml
+  tags:
+    - system
+    - openssl
+    - development
+  when: openssl_cacert_import
+

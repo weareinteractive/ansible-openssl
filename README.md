@@ -11,6 +11,7 @@
 > * configures openssl
 > * imports ssl certificates and keys
 > * creates a self-signed certificate
+> * optionally installs the CACert root certificates
 
 ## Installation
 
@@ -78,6 +79,21 @@ Here is a list of all the default variables for this role, which are also availa
 #   commonName_default: 'foobar.com'
 # openssl_config_template: templates/openssl.cnf.j2
 
+# Should CAcert certificates be downloaded and added to the keyring? Default is no
+openssl_cacert_import: no
+# Overrides for the file checksum when the CACert root certificates are downloaded.
+# Must be the output of 'sha256sum <name of certificate>'
+openssl_cacert_class_one_key_sha256: 'c0e0773a79dceb622ef6410577c19c1e177fb2eb9c623a49340de3c9f1de2560'
+openssl_cacert_class_three_key_sha256: 'f5badaa5da1cc05b110a9492455a2c2790d00c7175dcf3a7bcb5441af71bf84f'
+
+# These three are set in vars/OsFamily.yml files
+# Path to install certificate
+openssl_cacert_certificates_path: '/usr/local/share/ca-certificates/cacert.org/'
+# Command used to update certificates
+openssl_cacert_update_certs_command: 'update-ca-certificates'
+# Certificate pem path
+openssl_cacert_created_cert_path: '/etc/ssl/certs/cacert.org.pem'
+
 # keys to import
 openssl_keys: []
 # certificates to import
@@ -115,6 +131,7 @@ This is an example playbook:
   roles:
     - franklinkim.openssl
   vars:
+    openssl_cacert_import: yes
     openssl_keys:
       - name: foobar.com.key
         key: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDhSsYh36iAShzd\nNM0dSxiVXFe3WCZbePTQSNQ0hnFyBF1AfQKzpo9kFP3h+/IxzUNcPREAqOjmIfl4\ndVTXicyqVrqwt1su90+DitRmvYU0e4PDAA9pwQAxdT1qGBnzBFMgs/JpwQNQetCz\nzISDYn0QbaBGLXs6+UkDGyKu8LCX/T0vOLQ/LecDleZrXf6ubqK7H9SGtGsPLlDw\nonAe+KKieDYJlfHX9omaC953fp8aKDA7V5g/3KbkhsERDl6b/++fNjlestgnZMms\nYdDsM6MzBlt+3f0YQQXzVsmO8LGJxLMSMEmmg76e1VegPq+FyjMQp8r+8i2y/Tvz\nadL0bnivAgMBAAECggEBAKhbp4rCx/nu6HkKL0n3x4w+cLJrpmZvEovgEOybl4V7\n62/4u58jFj7VTRCmpcw/t1njrKQQldL8iqBRFjDoIlEc9PCAZRzI5dvIUIfikvuw\nXbvIfLwr5YgQM+/nyOSJU9G5h6st+NsYnIPwjwpb/FfdhItNC6z7g2tVyOpwpZc9\n2WwJadASIew3GOSd3gLoZLiO+r6XdPc//VcAxaNhu1B5RMHpQxeKa7KQ9T3CzCj4\nTBvIxV5LKAiGMlE26WZR7X2xkLzWswCsk8SAv9ulqbuKlSoPMh86BadM5H6SeGuP\ncsTcTGgoAmhbNmUN/j3lOjHJed7oUKEQGVgGIh4W1OkCgYEA+ECUtXl/sQzUiAYz\nKy556wb31v31D+tVftYU5BzwB/YO7T1ApY1/Bzs/KbnXiKu3eb3IyfEVe/CTcyE9\nhTrJJr5b6Nesa4n0PMpxHfZbWloGoewyfVl7Dgu6/KFctKFm17QcFSG7NsGraE6L\nBQ80gWo94Fyt1nXN9+myUeKga5sCgYEA6FLAgUFS7ykFA0bh5MLV1Q9IZav86Hky\nOmgM1ysd/B9ObRAxKaQezvK+4uyaUW55d8pQZJE2YQo84KPX1wFiAPkR5dwm/C1J\nuH9fz5OycXTUS0LJYGFLmeyKSQ4N+V+8Ex5laFqhHXE8Rzpi/QbYuf4V2EDPlY4g\n6kQgtzS/qn0CgYAQfDlj062nFDMI1WCQfYWbFdtfa33akMYcphq9Cy7lWHGlT2v7\nkmndERIgszac3MpSS0gKIPhMQq2H960eK8kvyXRRAgFxIrgVUVwxoSpv1YqbNhQk\nPsztIdpI7G47kHxD1rIGtTa5bCL1ykFxFJFoBqYVQBJLK4eB7wLobSQ6AQKBgEiB\n+z7cCmxGGyBosPvaqy4x9OB2ixprKPf9nXRSKquTgcCcOxvJ8yuXq2fbfFZJ6nMu\nm2SnxZcHwPRDbovWDKZNFf7tdOVjpQyGBHsel6S9V7ydfYgtFZFWt9oRHt9jt6kn\n5XJqRrqPqsZ4PIjH6EA0QtEZeTAuCavT03oaZm9pAoGBAPVuxRWNqfF7fWbLZiHG\nq3ykwooYtbSfixRe2y/h7IHrQyCbAEG/V2FBPKTNhh0zwHpRTS4PFRL3h+ZQNYrr\n/n+zN/OJl/75P53NDlZ5n1m1eYPMbVjDvvTDDdWqkESLUvTRT7JnyiXApRY0EWTA\nArNAJBxDBD66sa5BM9hZV9fG\n-----END PRIVATE KEY-----\n"

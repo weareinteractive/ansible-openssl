@@ -1,0 +1,7 @@
+---
+# Path to install certificate
+openssl_cacert_certificates_path: '/etc/pki/ca-trust/source/anchors/'
+# Command used to update certificates
+openssl_cacert_update_certs_command: 'update-ca-trust'
+# Certificate pem path
+openssl_cacert_created_cert_path: '/etc/pki/ca-trust/extracted/'
