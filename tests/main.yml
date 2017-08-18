@@ -27,3 +27,5 @@
       organizationName_default: 'My Organization'
       organizationalUnitName_default: 'My Organization Unit'
       commonName_default: 'foobar.com'
+    openssl_cacert_import: yes
+    openssl_generate_csr: yes

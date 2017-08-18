@@ -101,7 +101,10 @@ openssl_self_signed: []
 openssl_config: {}
 # config template to install, relative to the ansible repository root
 openssl_config_template:
-
+# generate a CSR for each self signed certificate
+openssl_generate_csr: no
+# path to certificate signing requests
+openssl_csrs_path: /etc/ssl/csrs
 # should CAcert certificates be downloaded and added to the keyring?
 openssl_cacert_import: no
 # overrides for the file checksum when the CACert root certificates are downloaded.
@@ -146,6 +149,8 @@ This is an example playbook:
       organizationName_default: 'My Organization'
       organizationalUnitName_default: 'My Organization Unit'
       commonName_default: 'foobar.com'
+    openssl_cacert_import: yes
+    openssl_generate_csr: yes
 
 ```
 
