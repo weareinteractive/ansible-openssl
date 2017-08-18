@@ -1,3 +1,14 @@
+<a name="1.9.0"></a>
+## 1.9.0 (2017-08-18)
+
+
+#### Features
+
+*   generate csrs ([0abb9d46](https://github.com/weareinteractive/ansible-openssl/commit/0abb9d46d7e7b31ce52b3749125523e1443be956))
+*   optionally install cacert roots ([507a6b1e](https://github.com/weareinteractive/ansible-openssl/commit/507a6b1ee0f85ef91c51e912d826ba0c3c10df05))
+
+
+
 <a name="1.8.0"></a>
 ## 1.8.0 (2016-04-18)
 
