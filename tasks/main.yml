@@ -25,6 +25,7 @@
   tags:
     - system
     - openssl
-    - development
+    - cacert
+    - openssl-cacert
   when: openssl_cacert_import
 

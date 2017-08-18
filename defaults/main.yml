@@ -35,13 +35,6 @@
 #   commonName_default: 'foobar.com'
 # openssl_config_template: templates/openssl.cnf.j2
 
-# Should CAcert certificates be downloaded and added to the keyring?
-openssl_cacert_import: no
-# Overrides for the file checksum when the CACert root certificates are downloaded.
-# Must be the output of 'sha256sum <name of certificate>'
-openssl_cacert_class_one_key_sha256: 'c0e0773a79dceb622ef6410577c19c1e177fb2eb9c623a49340de3c9f1de2560'
-openssl_cacert_class_three_key_sha256: 'f5badaa5da1cc05b110a9492455a2c2790d00c7175dcf3a7bcb5441af71bf84f'
-
 # keys to import
 openssl_keys: []
 # certificates to import
@@ -64,3 +57,10 @@ openssl_self_signed: []
 openssl_config: {}
 # config template to install, relative to the ansible repository root
 openssl_config_template:
+
+# should CAcert certificates be downloaded and added to the keyring?
+openssl_cacert_import: no
+# overrides for the file checksum when the CACert root certificates are downloaded.
+# must be the output of 'sha256sum <name of certificate>'
+openssl_cacert_class_one_key_sha256: 'c0e0773a79dceb622ef6410577c19c1e177fb2eb9c623a49340de3c9f1de2560'
+openssl_cacert_class_three_key_sha256: 'f5badaa5da1cc05b110a9492455a2c2790d00c7175dcf3a7bcb5441af71bf84f'
