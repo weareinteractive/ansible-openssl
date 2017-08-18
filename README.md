@@ -11,6 +11,7 @@
 > * configures openssl
 > * imports ssl certificates and keys
 > * creates a self-signed certificate
+> * optionally installs the CACert root certificates
 
 ## Installation
 
@@ -34,7 +35,7 @@ $ git clone https://github.com/weareinteractive/ansible-openssl.git franklinkim.
 
 ## Dependencies
 
-* Ansible >= 1.9
+* Ansible >= 2.0
 
 ## Variables
 
@@ -100,6 +101,16 @@ openssl_self_signed: []
 openssl_config: {}
 # config template to install, relative to the ansible repository root
 openssl_config_template:
+# generate a CSR for each self signed certificate
+openssl_generate_csr: no
+# path to certificate signing requests
+openssl_csrs_path: /etc/ssl/csrs
+# should CAcert certificates be downloaded and added to the keyring?
+openssl_cacert_import: no
+# overrides for the file checksum when the CACert root certificates are downloaded.
+# must be the output of 'sha256sum <name of certificate>'
+openssl_cacert_class_one_key_sha256: 'c0e0773a79dceb622ef6410577c19c1e177fb2eb9c623a49340de3c9f1de2560'
+openssl_cacert_class_three_key_sha256: 'f5badaa5da1cc05b110a9492455a2c2790d00c7175dcf3a7bcb5441af71bf84f'
 
 ```
 
@@ -138,6 +149,8 @@ This is an example playbook:
       organizationName_default: 'My Organization'
       organizationalUnitName_default: 'My Organization Unit'
       commonName_default: 'foobar.com'
+    openssl_cacert_import: yes
+    openssl_generate_csr: yes
 
 ```
 
@@ -151,7 +164,7 @@ $ make test
 ```
 
 ## Contributing
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
+In lieu of a formal style guide, take care to maintain the existing coding style. Add unit tests and examples for any new or changed functionality.
 
 1. Fork it
 2. Create your feature branch (`git checkout -b my-new-feature`)

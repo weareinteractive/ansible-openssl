@@ -13,3 +13,4 @@ description: |
   > * configures openssl
   > * imports ssl certificates and keys
   > * creates a self-signed certificate
+  > * optionally installs the CACert root certificates

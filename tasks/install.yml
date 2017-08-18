@@ -1,26 +1,7 @@
 ---
 
-- name: Installing packages with APT
-  apt:
-    pkg: "{{ item }}"
-    state: present
-  when: ansible_pkg_mgr == 'apt'
-  with_items:
-    - openssl
-
-- name: Installing packages with PACMAN
-  pacman:
-    pkg: "{{ item }}"
-    state: present
-  when: ansible_pkg_mgr == 'pacman'
-  with_items:
-    - openssl
-
-- name: Installing packages with YUM
-  yum:
-    name: "{{ item }}"
-    state: present
-  when: ansible_pkg_mgr == 'yum'
+- name: Installing packages
+  action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=present"
   with_items:
     - openssl
 
@@ -35,3 +16,11 @@
   vars:
     item: "{{ openssl_keys_path }}"
     mode: "0700"
+
+- name: Creating csrs dir
+  when: openssl_generate_csr
+  include: create_dir.yml
+  vars:
+    item: "{{ openssl_csrs_path }}"
+    mode: "0750"
+
