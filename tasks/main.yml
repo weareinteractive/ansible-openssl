@@ -1,27 +1,27 @@
 ---
 
-- include: install.yml
+- import_tasks: install.yml
   tags:
     - system
     - openssl
     - install
     - openssl-install
 
-- include: config.yml
+- import_tasks: config.yml
   tags:
     - system
     - openssl
     - config
     - openssl-config
 
-- include: manage.yml
+- import_tasks: manage.yml
   tags:
     - system
     - openssl
     - manage
     - openssl-manage
 
-- include: cacert.yml
+- import_tasks: cacert.yml
   tags:
     - system
     - openssl
