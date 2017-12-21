@@ -35,7 +35,7 @@ $ git clone https://github.com/weareinteractive/ansible-openssl.git franklinkim.
 
 ## Dependencies
 
-* Ansible >= 2.0
+* Ansible >= 2.4
 
 ## Variables
 
