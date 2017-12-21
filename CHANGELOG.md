@@ -1,3 +1,13 @@
+<a name="1.10.0"></a>
+## 1.10.0 (2017-12-21)
+
+
+#### Features
+
+*   replace include with import_tasks for 2.4 ([a21b0b42](https://github.com/weareinteractive/ansible-openssl/commit/a21b0b425199124f2de69c985a361bf2d04de8da))
+
+
+
 <a name="1.9.0"></a>
 ## 1.9.0 (2017-08-18)
 
