@@ -2,7 +2,7 @@
 
 - name: Configuring
   template:
-    src: "{{ openssl_config_template if openssl_config_template else 'etc-ssl-openssl.cnf.j2' }}"
+    src: "{{ openssl_config_template if openssl_config_template else 'etc/ssl/openssl.cnf.j2' }}"
     dest: /etc/ssl/openssl.cnf
     owner: root
     group: root
