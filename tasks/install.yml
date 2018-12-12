@@ -1,9 +1,13 @@
 ---
 
 - name: Installing packages
-  action: "{{ ansible_pkg_mgr }} pkg={{ item }} state=present"
-  with_items:
-    - openssl
+  package:
+    name: "{{ packages }}"
+    state: present
+  vars:
+    packages:
+      - openssl
+      - python-openssl
 
 - name: Creating certs dir
   import_tasks: create_dir.yml

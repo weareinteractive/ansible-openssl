@@ -16,15 +16,14 @@
 #     owner: "www-data"
 #     group: "www-data"
 # openssl_self_signed:
-#   - name: 'foobar.com'
-#     domains: ['*.foobar.com', 'foobar.com']
-#     country: 'DE'
-#     state: 'Bavaria'
-#     city: 'Munich'
-#     organization: 'Foo Bar'
-#     unit: ''
-#     email: 'foo@bar.com'
-#     days: 3650
+#   - name: foobar.com
+#     subject:
+#        C: DE
+#        ST: Bavaria
+#        L: Munich
+#        O: Foo Bar Inc
+#        CN: foobar.org
+#        emailAddress: null@foobar.org
 # openssl_config:
 #   default_bits: 2048
 #   countryName_default: DE

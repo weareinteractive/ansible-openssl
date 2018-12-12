@@ -18,28 +18,22 @@
     mode: "{{ item.mode | default('0644') }}"
   with_items: "{{ openssl_certs }}"
 
-- name: Creating self-signed server SSL cert
-  command: >
-    openssl req -new
-      -x509
-      -nodes
-      -extensions v3_ca
-      -days {{ item.days | default(3650) }}
-      -subj "/C={{ item.country | default('') }}/ST={{ item.state | default('') }}/L={{ item.city | default('') }}/O={{ item.organization | default('') }}/OU={{ item.unit | default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email | default('') }}"
-      -keyout {{ openssl_keys_path }}/{{ item.name }}.key
-      -out {{ openssl_certs_path }}/{{ item.name }}.crt
-  args:
-    creates: "{{ openssl_certs_path }}/{{ item.name }}.crt"
+- name: Creating self-signed private keys
+  openssl_privatekey:
+    path: "{{ openssl_keys_path }}/{{ item.name }}.key"
   with_items: "{{ openssl_self_signed }}"
 
-- name: Generating CSR from Certificate
-  when: openssl_generate_csr
-  command: >
-    openssl req -new
-      -subj "/C={{ item.country | default('') }}/ST={{ item.state | default('') }}/L={{ item.city | default('') }}/O={{ item.organization | default('') }}/OU={{ item.unit | default('') }}{% if item.domains is defined %}{% for domain in item.domains %}/CN={{ domain }}{% endfor %}{% else %}/CN={{ item.name }}{% endif %}/emailAddress={{ item.email | default('') }}"
-      -key {{ openssl_keys_path }}/{{ item.name }}.key
-      -out {{ openssl_csrs_path }}/{{ item.name }}.csr
-  args:
-    creates: "{{ openssl_csrs_path }}/{{ item.name }}.csr"
+- name: Creating self-signed CSRs
+  openssl_csr:
+    path: "{{ openssl_csrs_path }}/{{ item.name }}.csr"
+    privatekey_path: "{{ openssl_keys_path }}/{{ item.name }}.key"
+    subject: "{{ item.subject | default(omit) }}"
   with_items: "{{ openssl_self_signed }}"
 
+- name: Generate a Self Signed OpenSSL certificate.
+  openssl_certificate:
+    path: "{{ openssl_certs_path }}/{{ item.name }}.crt"
+    privatekey_path: "{{ openssl_keys_path }}/{{ item.name }}.key"
+    csr_path: "{{ openssl_csrs_path }}/{{ item.name }}.csr"
+    provider: selfsigned
+  with_items: "{{ openssl_self_signed }}"
