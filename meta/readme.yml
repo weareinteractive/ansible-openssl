@@ -1,6 +1,5 @@
 ---
-
-galaxy_name: franklinkim.openssl
+galaxy_name: weareinteractive.openssl
 github_user: weareinteractive
 github_name: ansible-openssl
 badges: |
@@ -14,3 +13,7 @@ description: |
   > * imports ssl certificates and keys
   > * creates a self-signed certificate
   > * optionally installs the CACert root certificates
+
+  **Note:**
+
+  > Since Ansible Galaxy supports [organization](https://www.ansible.com/blog/ansible-galaxy-2-release) now, this role has moved from `franklinkim.openssl` to `weareinteractive.openssl`!

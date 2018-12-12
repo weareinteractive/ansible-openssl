@@ -1,11 +1,11 @@
-# Ansible franklinkim.openssl role
+# Ansible weareinteractive.openssl role
 
 [![Build Status](https://img.shields.io/travis/weareinteractive/ansible-openssl.svg)](https://travis-ci.org/weareinteractive/ansible-openssl)
 [![Galaxy](http://img.shields.io/badge/galaxy-weareinteractive.openssl-blue.svg)](https://galaxy.ansible.com/weareinteractive/openssl)
 [![GitHub Tags](https://img.shields.io/github/tag/weareinteractive/ansible-openssl.svg)](https://github.com/weareinteractive/ansible-openssl)
 [![GitHub Stars](https://img.shields.io/github/stars/weareinteractive/ansible-openssl.svg)](https://github.com/weareinteractive/ansible-openssl)
 
-> `franklinkim.openssl` is an [Ansible](http://www.ansible.com) role which:
+> `weareinteractive.openssl` is an [Ansible](http://www.ansible.com) role which:
 >
 > * installs openssl
 > * configures openssl
@@ -13,24 +13,28 @@
 > * creates a self-signed certificate
 > * optionally installs the CACert root certificates
 
+**Note:**
+
+> Since Ansible Galaxy supports [organization](https://www.ansible.com/blog/ansible-galaxy-2-release) now, this role has moved from `franklinkim.openssl` to `weareinteractive.openssl`!
+
 ## Installation
 
 Using `ansible-galaxy`:
 
 ```shell
-$ ansible-galaxy install franklinkim.openssl
+$ ansible-galaxy install weareinteractive.openssl
 ```
 
 Using `requirements.yml`:
 
 ```yaml
-- src: franklinkim.openssl
+- src: weareinteractive.openssl
 ```
 
 Using `git`:
 
 ```shell
-$ git clone https://github.com/weareinteractive/ansible-openssl.git franklinkim.openssl
+$ git clone https://github.com/weareinteractive/ansible-openssl.git weareinteractive.openssl
 ```
 
 ## Dependencies
@@ -124,7 +128,7 @@ This is an example playbook:
 
 - hosts: all
   roles:
-    - franklinkim.openssl
+    - weareinteractive.openssl
   vars:
     openssl_keys:
       - name: foobar.com.key

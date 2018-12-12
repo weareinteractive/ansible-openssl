@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: franklin
+  author: franklin <franklin@weareinteractive.com>
   company: We Are Interactive
   description: Installs opensll and creates/imports certificates
   min_ansible_version: 2.4
