@@ -2,7 +2,7 @@
 
 - hosts: all
   roles:
-    - franklinkim.openssl
+    - weareinteractive.openssl
   vars:
     openssl_keys:
       - name: foobar.com.key
