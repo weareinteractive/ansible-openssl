@@ -64,15 +64,14 @@ Here is a list of all the default variables for this role, which are also availa
 #     owner: "www-data"
 #     group: "www-data"
 # openssl_self_signed:
-#   - name: 'foobar.com'
-#     domains: ['*.foobar.com', 'foobar.com']
-#     country: 'DE'
-#     state: 'Bavaria'
-#     city: 'Munich'
-#     organization: 'Foo Bar'
-#     unit: ''
-#     email: 'foo@bar.com'
-#     days: 3650
+#   - name: foobar.com
+#     subject:
+#        C: DE
+#        ST: Bavaria
+#        L: Munich
+#        O: Foo Bar Inc
+#        CN: foobar.org
+#        emailAddress: null@foobar.org
 # openssl_config:
 #   default_bits: 2048
 #   countryName_default: DE
@@ -137,8 +136,14 @@ This is an example playbook:
       - name: foobar.com.crt
         cert: "-----BEGIN CERTIFICATE-----\nMIIDuTCCAqGgAwIBAgIJAO7EaRwLzPYyMA0GCSqGSIb3DQEBCwUAMHMxCzAJBgNV\nBAYTAkRFMRAwDgYDVQQIDAdCYXZhcmlhMQ8wDQYDVQQHDAZNdW5pY2gxEDAOBgNV\nBAoMB0ZvbyBCYXIxEzARBgNVBAMMCmZvb2Jhci5jb20xGjAYBgkqhkiG9w0BCQEW\nC2Zvb0BiYXIuY29tMB4XDTE0MDgwMjE1NTMxNloXDTI0MDczMDE1NTMxNlowczEL\nMAkGA1UEBhMCREUxEDAOBgNVBAgMB0JhdmFyaWExDzANBgNVBAcMBk11bmljaDEQ\nMA4GA1UECgwHRm9vIEJhcjETMBEGA1UEAwwKZm9vYmFyLmNvbTEaMBgGCSqGSIb3\nDQEJARYLZm9vQGJhci5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB\nAQDhSsYh36iAShzdNM0dSxiVXFe3WCZbePTQSNQ0hnFyBF1AfQKzpo9kFP3h+/Ix\nzUNcPREAqOjmIfl4dVTXicyqVrqwt1su90+DitRmvYU0e4PDAA9pwQAxdT1qGBnz\nBFMgs/JpwQNQetCzzISDYn0QbaBGLXs6+UkDGyKu8LCX/T0vOLQ/LecDleZrXf6u\nbqK7H9SGtGsPLlDwonAe+KKieDYJlfHX9omaC953fp8aKDA7V5g/3KbkhsERDl6b\n/++fNjlestgnZMmsYdDsM6MzBlt+3f0YQQXzVsmO8LGJxLMSMEmmg76e1VegPq+F\nyjMQp8r+8i2y/TvzadL0bnivAgMBAAGjUDBOMB0GA1UdDgQWBBTMI1BoL1dh9tov\nQxJHM6GnZfBhMTAfBgNVHSMEGDAWgBTMI1BoL1dh9tovQxJHM6GnZfBhMTAMBgNV\nHRMEBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBAQALezxaXABZEQE6RDmtfBE7jdGy\nxWJVLxSoH0+YNNVXDYNCwNdDMBbjcH6B//aaGLc6Zqif7+HlRfmr4SVfjIP8UQZR\nSQ2s/tcftR6Wp2aadIdUZZkIvmaWvyFfBrrm8F6Ot22Y8EIgjSl/y4kewM6qD1MY\nxC7qAwze2k0yPqVdAXFYJh/+thRTV4YA9R8OCVVRO4xoEOGsTOsHQYH7+/lR3U+o\nbmBu+k1pPK+LYCoQyIrIB6xHqRYf4nHirxlbu4+aAY1Rc57Okbk68g6ThA27r8Ay\n/14Fu1Ry6NAq/1zeSzX4JrFQOlZDNtqF0UXgph2RehMZjtQG2b4B8gLpwPRe\n-----END CERTIFICATE-----\n"
     openssl_self_signed:
-      - { name: 'foobar.org', country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
-      - { name: '*.foobar.org', domains: ['foobar.org', '*.foobar.org'], country: 'DE', state: 'Bavaria', city: 'Munich', organization: 'Foo Bar', unit: '', email: 'foo@bar.com', days: 3650 }
+      - name: fooboar.org
+        subject:
+           C: DE
+           ST: Bavaria
+           L: Munich
+           O: Foo Bar Inc
+           CN: foobar.org
+           emailAddress: null@foobar.org
     openssl_keys_path: /etc/my-ssl/private
     openssl_certs_path: /etc/my-ssl/certs
     openssl_default_key_owner: root
