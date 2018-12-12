@@ -5,7 +5,7 @@ services:
   - docker
 env:
   global:
-    - role: weareinteractive.users
+    - role: weareinteractive.openssl
   matrix:
     - distribution: Ubuntu
       distribution_version: "16.04"
