@@ -1,3 +1,14 @@
+<a name="2.0.0"></a>
+## 2.0.0 (2018-12-12)
+
+
+#### Features
+
+*   use built in openssl modules ([535f9b84](https://github.com/weareinteractive/ansible-openssl/commit/535f9b846fab83b3c14d13efe553edfe413809bb))
+*   update to galaxy role name ([c485f2f4](https://github.com/weareinteractive/ansible-openssl/commit/c485f2f47549c7197e8ce7300bb154bd6ea3fe26))
+
+
+
 <a name="1.10.0"></a>
 ## 1.10.0 (2017-12-21)
 
