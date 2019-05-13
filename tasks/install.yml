@@ -2,10 +2,14 @@
 
 - name: Installing packages
   package:
-    name: openssl
+    name: "{{ packages }}"
     state: present
+  vars:
+    packages:
+      - openssl
+      - python-pip
 
-- name: Installing pip packages
+- name: Installing python packages
   pip:
     name: pyopenssl
 
