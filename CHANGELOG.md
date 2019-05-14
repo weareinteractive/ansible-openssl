@@ -1,3 +1,17 @@
+<a name="2.1.0"></a>
+## 2.1.0 (2019-05-14)
+
+
+#### Features
+
+*   add  ca-certificates pkg ([ee08b25a](https://github.com/weareinteractive/ansible-openssl/commit/ee08b25a9b1b680b52f936a0294aaed5b2eff567))
+*   update pip packages ([36a9437c](https://github.com/weareinteractive/ansible-openssl/commit/36a9437ca76c32b8e5c0c12609afd954de0d7ea9))
+*   add package vars ([6c7294b4](https://github.com/weareinteractive/ansible-openssl/commit/6c7294b44333a0c1120155fa58f904914c642361))
+*   install pip packages ([a42a55b9](https://github.com/weareinteractive/ansible-openssl/commit/a42a55b95b1eeee231163a044ce866b0f6251faf))
+*   add pyopenssl ([82b43bc1](https://github.com/weareinteractive/ansible-openssl/commit/82b43bc10b3cba297d187747d78be8e98d24e333))
+
+
+
 <a name="2.0.0"></a>
 ## 2.0.0 (2018-12-12)
 
