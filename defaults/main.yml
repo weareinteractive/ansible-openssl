@@ -34,6 +34,14 @@
 #   commonName_default: 'foobar.com'
 # openssl_config_template: templates/openssl.cnf.j2
 
+# packages (versions)
+openssl_packages:
+  - openssl
+  - python-pip
+  - python-setuptools
+# pip packages
+openssl_pip_packages:
+  - pyopenssl
 # keys to import
 openssl_keys: []
 # certificates to import

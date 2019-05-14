@@ -2,16 +2,12 @@
 
 - name: Installing packages
   package:
-    name: "{{ packages }}"
+    name: "{{ openssl_packages }}"
     state: present
-  vars:
-    packages:
-      - openssl
-      - python-pip
 
 - name: Installing python packages
   pip:
-    name: pyopenssl
+    name: "{{ openssl_pip_packages }}"
 
 - name: Creating certs dir
   import_tasks: create_dir.yml
