@@ -1,5 +1,12 @@
 ---
 
+- import_tasks: vars.yml
+  tags:
+    - system
+    - openssl
+    - install
+    - openssl-vars
+
 - import_tasks: install.yml
   tags:
     - system
