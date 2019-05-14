@@ -38,9 +38,6 @@
 openssl_packages:
   - openssl
   - python3-openssl
-# pip packages
-openssl_pip_packages: []
-  # - pyopenssl
 # keys to import
 openssl_keys: []
 # certificates to import
