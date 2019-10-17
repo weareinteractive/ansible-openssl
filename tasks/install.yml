@@ -22,9 +22,9 @@
     mode: "0700"
 
 - name: Creating csrs dir
-  when: openssl_generate_csr
   import_tasks: create_dir.yml
   vars:
     item: "{{ openssl_csrs_path }}"
     mode: "0750"
+  when: openssl_generate_csr | bool
 

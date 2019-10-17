@@ -34,5 +34,5 @@
     - openssl
     - cacert
     - openssl-cacert
-  when: openssl_cacert_import
+  when: openssl_cacert_import | bool
 
