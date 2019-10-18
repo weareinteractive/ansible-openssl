@@ -1,3 +1,17 @@
+<a name="2.2.0"></a>
+## 2.2.0 (2019-10-18)
+
+
+#### Bug Fixes
+
+*   add pip executable var ([19a6cb6b](https://github.com/weareinteractive/ansible-openssl/commit/19a6cb6bbe71ca269ced7e502b6161c1b30a9b49))
+
+#### Features
+
+*   add notifier ([03be170b](https://github.com/weareinteractive/ansible-openssl/commit/03be170bf7b1d9140838672553f0a38a5bb0fd12))
+
+
+
 <a name="2.1.0"></a>
 ## 2.1.0 (2019-05-14)
 
