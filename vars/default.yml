@@ -3,6 +3,7 @@
 openssl_packages:
   - openssl
   - python3-openssl
+  - ca-certificates
 # pip executable
 openssl_pip_executable: /usr/bin/pip3
 # Path to install certificate
