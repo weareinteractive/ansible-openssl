@@ -3,6 +3,7 @@
 openssl_packages:
   - openssl
   - python-pip
+  - python-setuptools
 # pip packages
 openssl_pip_packages:
   - pyopenssl
