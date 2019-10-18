@@ -5,11 +5,6 @@
     name: "{{ openssl_packages }}"
     state: present
 
-# - name: Installing python packages
-#   pip:
-#     name: "{{ openssl_pip_packages }}"
-#     executable: "{{ openssl_pip_executable }}"
-
 - name: Creating certs dir
   import_tasks: create_dir.yml
   vars:
