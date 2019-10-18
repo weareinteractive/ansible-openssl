@@ -7,7 +7,9 @@ openssl_packages:
   - python3-virtualenv
 # pip packages
 openssl_pip_packages:
-  - pyopenssl==16.2.0 # fix version due to: https://github.com/brocaar/loraserver-setup/issues/13
+  - pyopenssl
+# pip executable
+openssl_pip_executable: pip3
 # Path to install certificate
 openssl_cacert_certificates_path: '/usr/local/share/ca-certificates/cacert.org/'
 # Command used to update certificates

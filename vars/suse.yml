@@ -8,6 +8,8 @@ openssl_packages:
 # pip packages
 openssl_pip_packages:
   - pyopenssl
+# pip executable
+openssl_pip_executable: pip
 # Path to install certificate
 openssl_cacert_certificates_path: '/etc/pki/ca-trust/source/anchors/'
 # Command used to update certificates
