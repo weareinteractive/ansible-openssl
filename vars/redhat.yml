@@ -2,7 +2,7 @@
 # packages (versions)
 openssl_packages:
   - openssl
-  - python36-pyOpenSSL
+  - python36-pyOpenSSL.noarch
 # pip packages
 openssl_pip_packages: []
 # Path to install certificate
