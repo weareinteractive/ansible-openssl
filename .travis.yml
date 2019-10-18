@@ -45,11 +45,11 @@ script:
   - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
 
   # Test role.
-  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -vvvv /etc/ansible/roles/${role}/tests/main.yml'
+  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 python3 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml'
 
   # Test Idempotence
   - idempotence=$(mktemp)
-  - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${role}/tests/main.yml | tee -a ${idempotence}
+  - docker exec "$(cat ${container_id})" python3 ansible-playbook /etc/ansible/roles/${role}/tests/main.yml | tee -a ${idempotence}
   - >
     tail ${idempotence}
     | grep -q 'changed=0.*failed=0'
