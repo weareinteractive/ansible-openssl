@@ -19,11 +19,14 @@ env:
       distribution_version: "9"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    # fails due to https://github.com/brocaar/loraserver-setup/issues/13
-    #- distribution: Debian
-    #  distribution_version: "8"
-    #  init: /lib/systemd/systemd
-    #  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: Debian
+      distribution_version: "8"
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    # - distribution: Centos
+    #   distribution_version: "7"
+    #   init: /lib/systemd/systemd
+    #   run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
 
 before_install:
   - sudo apt-get update
@@ -49,7 +52,7 @@ script:
   - docker exec "$(cat ${container_id})" ansible-playbook /etc/ansible/roles/${role}/tests/main.yml | tee -a ${idempotence}
   - >
     tail ${idempotence}
-    | grep -q 'failed=0'
+    | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 

@@ -1,0 +1,4 @@
+---
+
+- name: update ca certificates
+  command: "{{ openssl_cacert_update_certs_command }}"
