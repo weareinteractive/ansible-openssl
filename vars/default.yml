@@ -4,6 +4,7 @@ openssl_packages:
   - openssl
   - python-pip
   - python-setuptools
+  - python-virtualenv
 # pip packages
 openssl_pip_packages:
   - pyopenssl
