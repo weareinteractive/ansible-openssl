@@ -27,7 +27,6 @@ env:
       distribution_version: "7"
       init: /lib/systemd/systemd
       run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
-      before_test: "'yum makecache && yum install -y openssh-clients'"
 
 before_install:
   - sudo apt-get update
