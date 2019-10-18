@@ -3,6 +3,7 @@
 openssl_packages:
   - openssl
   - python3-openssl
+  - ca-certificates
 # pip packages
 openssl_pip_packages: []
 # Path to install certificate
