@@ -2,9 +2,9 @@
 # packages (versions)
 openssl_packages:
   - openssl
-  - python3-pip
-  - python3-setuptools
-  - python3-virtualenv
+  - python-pip
+  - python-setuptools
+  - python-virtualenv
 # pip packages
 openssl_pip_packages:
   - pyopenssl
