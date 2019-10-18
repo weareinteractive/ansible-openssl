@@ -2,14 +2,9 @@
 # packages (versions)
 openssl_packages:
   - openssl
-  - python3-pip
-  - python3-setuptools
-  - python3-virtualenv
-# pip packages
-openssl_pip_packages:
-  - pyopenssl
+  - python3-openssl
 # pip executable
-openssl_pip_executable: pip3
+openssl_pip_executable: /usr/bin/pip3
 # Path to install certificate
 openssl_cacert_certificates_path: '/usr/local/share/ca-certificates/cacert.org/'
 # Command used to update certificates

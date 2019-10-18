@@ -2,14 +2,9 @@
 # packages (versions)
 openssl_packages:
   - openssl
-  - python-pip
-  - python-setuptools
-  - python-virtualenv
-# pip packages
-openssl_pip_packages:
-  - pyopenssl
+  - python-openssl
 # pip executable
-openssl_pip_executable: pip
+openssl_pip_executable: /usr/bin/pip
 # Path to install certificate
 openssl_cacert_certificates_path: '/etc/pki/ca-trust/source/anchors/'
 # Command used to update certificates
