@@ -2,7 +2,7 @@
 # packages (versions)
 openssl_packages:
   - openssl
-  - python3-pyOpenSSL
+  - python36-pyOpenSSL
 # pip packages
 openssl_pip_packages: []
 # Path to install certificate
