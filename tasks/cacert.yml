@@ -14,17 +14,12 @@
     dest: "{{ openssl_cacert_certificates_path }}"
     url: http://www.cacert.org/certs/root.crt
     sha256sum: "{{ openssl_cacert_class_one_key_sha256 }}"
-  register: cacertrootone
+  notify: update certificates
 
 - name: Download CAcert Class 3 PKI key
   get_url:
     dest: "{{ openssl_cacert_certificates_path }}"
     url: http://www.cacert.org/certs/class3.crt
     sha256sum: "{{ openssl_cacert_class_three_key_sha256 }}"
-  register: cacertrootthree
-
-# Don't run if the cert has already been installed
-- name: Update ca certificates to enable CAcert
-  command: "{{ openssl_cacert_update_certs_command }}"
-  when: cacertrootone.changed or cacertrootthree.changed
+  notify: update certificates
 

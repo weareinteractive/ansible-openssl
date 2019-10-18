@@ -19,7 +19,6 @@ env:
       distribution_version: "9"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    # fails due to https://github.com/brocaar/loraserver-setup/issues/13
     - distribution: Debian
       distribution_version: "8"
       init: /lib/systemd/systemd
