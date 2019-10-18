@@ -2,9 +2,10 @@
 # packages (versions)
 openssl_packages:
   - openssl
-  - python36-pyOpenSSL.noarch
+  - python-pip
 # pip packages
-openssl_pip_packages: []
+openssl_pip_packages:
+  - pyopenssl
 # Path to install certificate
 openssl_cacert_certificates_path: '/etc/pki/ca-trust/source/anchors/'
 # Command used to update certificates
