@@ -117,6 +117,18 @@ openssl_cacert_class_three_key_sha256: 'f5badaa5da1cc05b110a9492455a2c2790d00c71
 
 ```
 
+## Handlers
+
+These are the handlers that are defined in `handlers/main.yml`.
+
+```yaml
+---
+
+- name: update ca certificates
+  command: "{{ openssl_cacert_update_certs_command }}"
+
+```
+
 
 ## Usage
 
