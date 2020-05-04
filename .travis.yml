@@ -42,7 +42,7 @@ script:
   - docker exec -t "$(cat ${container_id})" env TERM=xterm ansible --version
 
   # Install dependencies
-  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'apt-get update &&  && apt-get install -y python-openssl'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm bash -c 'apt-get update && apt-get install -y python-openssl'
 
   # Ansible syntax check.
   - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
