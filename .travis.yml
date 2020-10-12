@@ -39,16 +39,16 @@ script:
   - docker run -d -v "${PWD}":/etc/ansible/roles/${role}:ro ${run_opts} ansiblecheck/ansiblecheck:"${distribution,,}"-"${distribution_version}" "${init}" > "${container_id}"
 
   # Install dependencies
-  - 'docker exec --tty "$(cat ${container_id})" env TERM=xterm sudo apt-get update && sudo apt-get install -y python3 python3-pip'
+  - docker exec --tty "$(cat ${container_id})" env TERM=xterm sudo apt-get update && sudo apt-get install -y python3 python3-pip
 
   # Print ansible version
   - docker exec -t "$(cat ${container_id})" env TERM=xterm ansible --version
 
   # Ansible syntax check.
-  - 'docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook -e "ansible_python_interpreter=/usr/bin/python3" /etc/ansible/roles/${role}/tests/main.yml --syntax-check'
+  - docker exec -t "$(cat ${container_id})" env TERM=xterm ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' /etc/ansible/roles/${role}/tests/main.yml --syntax-check
 
   # Test role.
-  - 'docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e "ansible_python_interpreter=/usr/bin/python3" /etc/ansible/roles/${role}/tests/main.yml'
+  - docker exec "$(cat ${container_id})" env ANSIBLE_FORCE_COLOR=1 ansible-playbook -e 'ansible_python_interpreter=/usr/bin/python3' /etc/ansible/roles/${role}/tests/main.yml
 
   # Test Idempotence
   - idempotence=$(mktemp)
