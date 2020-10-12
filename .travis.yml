@@ -11,11 +11,10 @@ env:
       distribution_version: "18.04"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    # Skipping due to: AttributeError: 'module' object has no attribute 'SSL_ST_INIT'
-    #- distribution: Ubuntu
-    #  distribution_version: "16.04"
-    #  init: /lib/systemd/systemd
-    #  run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    - distribution: Ubuntu
+      distribution_version: "16.04"
+      init: /lib/systemd/systemd
+      run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
     - distribution: Debian
       distribution_version: "9"
       init: /lib/systemd/systemd
@@ -24,10 +23,10 @@ env:
       distribution_version: "8"
       init: /lib/systemd/systemd
       run_opts: "--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro"
-    # - distribution: Centos
-    #   distribution_version: "7"
-    #   init: /lib/systemd/systemd
-    #   run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
+    - distribution: Centos
+      distribution_version: "7"
+      init: /lib/systemd/systemd
+      run_opts: "'--privileged --volume=/sys/fs/cgroup:/sys/fs/cgroup:ro'"
 
 before_install:
   - sudo apt-get update
