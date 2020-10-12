@@ -5,6 +5,11 @@
     name: "{{ openssl_packages }}"
     state: present
 
+- name: Installing pip packages
+  pip:
+    name: pyopenssl
+    state: present
+
 - name: Creating certs dir
   import_tasks: create_dir.yml
   vars:
